@@ -3,28 +3,15 @@
 ; C Runtime Routine.
 
 GLOBAL _start
-EXTERN __libc_start_main
-EXTERN main
-EXTERN _init
-EXTERN _fini
+EXTERN _start_c
 
 SECTION .text
 _start:
-    ; Extracr argc, argv and envp
-    MOV RSI, [RSP]                ; RSI = argc
-    LEA RDX, [RSP + 8]            ; RDX = argv pointer
-    LEA RCX, [RSP + 8 + RDI * 8]  ; RCX = envp pointer
-    
-    ; Call libc start
-    MOV RDI, main                 ; First arg = main
-    MOV RSI, [RSP]                ; argc
-    LEA RDX, [RSP + 8]            ; argv
-    LEA RCX, [_init]              ; Init function
-    LEA R8, [_fini]               ; Fini function
-    XOR R9, R9                    ; rtld_fini = 0
-    CALL __libc_start_main
+    XOR RBP, RBP              ; Clears RBP register
+    MOV RDI, RSP              ; Pass pointet to argc
 
-    ; Fallback: exit syscall if __mystic_libc_start_main returns
-    MOV RDI, RAX                  ; Return value from main
-    MOV RAX, 60                   ; sys_exit
-    SYSCALL
+.weak _DYNAMIC
+.hidden _DYNAMIC
+    LEA RSI, [RIP + _DYNAMIC] ; Move address to RSI
+    AND RSP, -16              ; Align to 16 byte
+    CALL _start_c             ; Call main _start_c function
