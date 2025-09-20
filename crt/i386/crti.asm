@@ -1,6 +1,8 @@
 ; MysticLibc - Standard C Library.
-; crti.asm
+; crti.asm (i386)
 ; Prolouge of C Runtime Routine.
+
+[BITS 32]
 
 GLOBAL _init
 GLOBAL _fini
@@ -8,11 +10,11 @@ GLOBAL _fini
 ;  Prolouge section of _init
 SECTION .init
 _init:
-    PUSH RBP              ; Push RBP register
-    MOV RBP, RSP          ; Move RSP to RBP
+    PUSH EBP              ; Push EBP register
+    MOV  EBP, ESP         ; Move ESP to EBP
 
 ;  Prolouge section of _fini
 SECTION .fini
 _fini:
-    PUSH RBP              ; Push RBP register
-    MOV RBP, RSP          ; Move RSP to RBP
+    PUSH EBP              ; Push EBP register
+    MOV  EBP, ESP         ; Move ESP to EBP

@@ -1,5 +1,5 @@
 ; MysticLibc - Standard C Library.
-; crtn.asm
+; crtn.asm (x86_64)
 ; Epilouge of C Runtime Routine.
 
 ; Epilouge section of _init
