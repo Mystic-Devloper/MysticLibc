@@ -1,12 +1,14 @@
 /**
  * MysticLibc - Standard C Library.
- * crti.asm (arm32)
- * C Runtime Routine Initialization.
+ * 
+ * @file crti.s (arm32)
+ *
+ * @brief C Runtime Routine Initialization stub.
  */
 
+.SYNTAX unified
+.SECTION .TEXT
 
-
-.TEXT
 .SECTION .init, "ax"
 .GLOBAL _init
 .TYPE _init, %function
@@ -19,4 +21,6 @@ _init:
 .GLOBAL _fini
 .TYPE _fini, %function
 .ALIGN 2
-    
+_fini:
+    PUSH {r11, lr}            /* Save frame pointer and return address */
+    ADD  r11, SP, #0          /* Set frame pointer (r11 = sp) */
