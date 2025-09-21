@@ -11,6 +11,7 @@
 .GLOBAL _start
 
 .SECTION .TEXT
+.TYPE _start, %function
 _start:
     XOR RBP, RBP              /* Clears RBP register */
     MOV RDI, RSP              /* Pass pointet to argc */
