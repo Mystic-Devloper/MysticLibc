@@ -9,8 +9,10 @@
 .SYNTAX unified
 .SECTION .TEXT
 
-.SECTION .init, "ax"
 .GLOBAL _init
+.GLOBAL _fini
+
+.SECTION .init, "ax"
 .TYPE _init, %function
 .ALIGN 2
 _init:
@@ -18,7 +20,6 @@ _init:
     ADD  r11, SP, #0          /* Set frame pointer (r11 = sp) */
 
 .SECTION .fini, "ax"
-.GLOBAL _fini
 .TYPE _fini, %function
 .ALIGN 2
 _fini:
