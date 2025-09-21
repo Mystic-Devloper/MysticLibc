@@ -3,11 +3,10 @@
  * 
  * @file crti.s (arm32)
  *
- * @brief C Runtime Routine Initialization stub.
+ * @brief C Runtime Routine Epilogue.
  */
 
 .SYNTAX unified
-.SECTION .TEXT
 
 .GLOBAL _init
 .GLOBAL _fini
@@ -16,12 +15,12 @@
 .TYPE _init, %function
 .ALIGN 2
 _init:
-    PUSH {r11, lr}            /* Save frame pointer and return address */
-    ADD  r11, SP, #0          /* Set frame pointer (r11 = sp) */
+    PUSH {R11, LR}            /* Save frame pointer and return address */
+    MOV  R11, SP              /* Set frame pointer (r11 = sp) */
 
 .SECTION .fini, "ax"
 .TYPE _fini, %function
 .ALIGN 2
 _fini:
-    PUSH {r11, lr}            /* Save frame pointer and return address */
-    ADD  r11, SP, #0          /* Set frame pointer (r11 = sp) */
+    PUSH {R11, LR}            /* Save frame pointer and return address */
+    MOV  R11, SP              /* Set frame pointer (r11 = sp) */

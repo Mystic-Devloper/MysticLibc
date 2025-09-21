@@ -12,6 +12,7 @@
 .GLOBAL _start
 
 .SECTION .TEXT
+.TYPE _start, %function
 _start:
     XOR EBP, EBP                 /* Clears EBP register */
     MOV EAX, ESP                 /* Pass pointet to argc */
