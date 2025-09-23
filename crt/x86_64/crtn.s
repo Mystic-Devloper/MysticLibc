@@ -6,14 +6,12 @@
  * @brief Epilogue of C Runtime Routine.
  */
 
-.INTEL_SYNTAX NOPREFIX
-
 /* Epilouge section of _init */
-.SECTION .init
-    POP RBP               /* Pop RBP register */
-    RET                   /* Return */
+.section .init
+    popq %rbp               /* Pop RBP register */
+    ret                     /* Return */
 
 /* Epilouge section of _fini */
-.SECTION .fini
-    POP RBP               /* Pop RBP register */
-    RET                   /* Return */
+.section .fini
+    popq %rbp               /* Pop RBP register */
+    ret                     /* Return */
