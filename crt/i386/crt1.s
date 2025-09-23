@@ -16,15 +16,15 @@
 _start:
     XOR EBP, EBP                 /* Clears EBP register */
     MOV EAX, ESP                 /* Pass pointet to argc */
+    AND  ESP, -16                /* Align to 16 byte */
+    PUSH EAX                     /* Push EAX */
+    PUSH EAX                     /* Push EAX */
 
 .WEAK   _DYNAMIC
 .HIDDEN _DYNAMIC
-    CALL get_eip
+    CALL 1f                      /* Call forward label */
 
-get_eip:
-    POP ESI                      /* Pop ESI register */
-    ADD ESI, _DYNAMIC - get_eip  /* ESI = &_DYNAMIC */
-
-    AND  ESP, -16                /* Align to 16 byte */
+1:
+    ADD ESP, _DYNAMIC - 1b       /* ESP = &_DYNAMIC */
     PUSH EAX                     /* Push EAX */
     CALL _start_c                /* Call main _start_c function */

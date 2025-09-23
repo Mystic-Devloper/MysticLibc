@@ -26,9 +26,11 @@ extern void (*__fini_array_end[])(void);
  * @brief _init function implementation.
  */
 void _init(void) {
-    for (void (**p)(void) = __init_array_start; p < __init_array_end; ++p) {
-        if (*p) {
-            (*p)();
+    void (**p)(void) = (void)&__init_array_start; 
+    while (p < (void)&__init_array_end) {
+	p += sizeof(void(*)(void));
+        if (*(void(**)(void))p) {
+            (*(void(**)(void))p)();
         }
     }
 }
@@ -37,11 +39,11 @@ void _init(void) {
  * @brief _fini function implementation.
  */
 void _fini(void) {
-    void (**p)(void) = __fini_array_end;
-    while (p > __fini_array_start) {
-        --p;
-        if (*p) {
-            (*p)();
+    void (**p)(void) = (void)&__fini_array_end;
+    while (p > (void)&__fini_array_start) {
+        p -= sizeof(void(*)(void));
+        if (*(void(**)(void))p) {
+            (*(void(**)(void))p)();
         }
     }
 }
