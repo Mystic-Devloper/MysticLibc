@@ -6,14 +6,14 @@
  * @brief C Runtime Routine Epilogue.
  */
 
-.SYNTAX unified
+.syntax unified
 
 /* Prologue section of init */
-.SECTION .init
-    POP {R11, LR}          /* Pop frame pointer and return address */
-    BX LR                  /* Branch and exchange in LR */
+.section .init
+    pop {r11, lr}          /* Pop frame pointer and return address */
+    bx lr                  /* Branch and exchange in LR */
 
 /* Prologue section of init */
-.SECTION .fini
-    POP {R11, LR}          /* Pop frame pointer and return address */
-    BX LR                  /* Branch and exchange in LR */
+.section .fini
+    pop {r11, lr}          /* Pop frame pointer and return address */
+    bx lr                  /* Branch and exchange in LR */

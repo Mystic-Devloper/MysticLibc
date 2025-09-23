@@ -6,23 +6,23 @@
  * @brief C Runtime Routine Prologue.
  */
 
-.SYNTAX unified
+.syntax unified
 
-.GLOBAL _init
-.GLOBAL _fini
+.global _init
+.global _fini
 
 /* Prologue section of init */
-.SECTION .init, "ax"
-.TYPE _init, %function
-.ALIGN 2
+.section .init, "ax"
+.type _init, %function
+.align 2
 _init:
-    PUSH {R11, LR}            /* Save frame pointer and return address */
-    MOV  R11, SP              /* Set frame pointer (r11 = sp) */
+    push {r11, lr}            /* Save frame pointer and return address */
+    mov  r11, sp              /* Set frame pointer (r11 = sp) */
 
 /* Prologue section of fini */
-.SECTION .fini, "ax"
-.TYPE _fini, %function
-.ALIGN 2
+.section .fini, "ax"
+.type _fini, %function
+.align 2
 _fini:
-    PUSH {R11, LR}            /* Save frame pointer and return address */
-    MOV  R11, SP              /* Set frame pointer (r11 = sp) */
+    push {r11, lr}            /* Save frame pointer and return address */
+    mov  r11, sp              /* Set frame pointer (r11 = sp) */
