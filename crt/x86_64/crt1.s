@@ -9,7 +9,7 @@
 .global _start
 
 .section .text, "ax"
-.type _start, %function
+.type _start, @function
 _start:
     xorq %rbp, %rbp              /* Clears RBP register */
     movq %rsp, %rdi              /* Pass pointet to argc */

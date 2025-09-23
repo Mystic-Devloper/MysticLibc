@@ -6,24 +6,23 @@
  * @brief Prolouge of C Runtime Routine.
  */
 
-.INTEL_SYNTAX NOPREFIX
-.CODE32                          /* Generate 32 bits instructions */
+.code32                          /* Generate 32 bits instructions */
 
-.GLOBAL _init
-.GLOBAL _fini
+.global _init
+.global _fini
 
 /* Prolouge section of _init */
-.SECTION .init, "ax"
-.TYPE _init, %function
-.ALIGN 16
+.section .init, "ax"
+.type _init, @function
+.align 16
 _init:
-    PUSH EBP              /* Push EBP register */
-    MOV  EBP, ESP         /* Move ESP to EBP */
+    pushl %ebp              /* Push EBP register */
+    movl  %esp, %ebp        /* Move ESP to EBP */
 
 /* Prolouge section of _fini */
-.SECTION .fini, "ax"
-.TYPE _fini, %function
-.ALIGN 16
+.section .fini, "ax"
+.type _fini, @function
+.align 16
 _fini:
-    PUSH EBP              /* Push EBP register */
-    MOV  EBP, ESP         /* Move ESP to EBP */
+    pushl %ebp              /* Push EBP register */
+    movl  %esp, %ebp        /* Move ESP to EBP */

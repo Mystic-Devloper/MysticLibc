@@ -6,15 +6,14 @@
  * @brief Epilouge of C Runtime Routine.
  */
 
-.INTEL_SYNTAX NOPREFIX
-.CODE32                          /* Generate 32 bits instructions */
+.code32                          /* Generate 32 bits instructions */
 
 /* Epilouge section of _init */
-.SECTION .init
-    POP EBP               /* Pop EBP register */
-    RET                   /* Return */
+.section .init
+    popl %ebp               /* Pop EBP register */
+    ret                     /* Return */
 
 /* Epilouge section of _fini */
-.SECTION .fini
-    POP EBP               /* Pop EBP register */
-    RET                   /* Return */
+.section .fini
+    popl %ebp               /* Pop EBP register */
+    ret                     /* Return */
