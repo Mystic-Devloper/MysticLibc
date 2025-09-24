@@ -27,3 +27,4 @@ _start:
     addl  $_DYNAMIC - 1b, (%esp)    /* ESP = &_DYNAMIC */
     pushl %eax                      /* Push EAX */
     call  _start_c                  /* Call main _start_c function */
+    hlt                             /* Halt if somehow _start_c returns */

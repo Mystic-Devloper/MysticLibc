@@ -19,3 +19,4 @@ _start:
     leaq _DYNAMIC(%rip), %rsi     /* Move address to RSI */
     andq $-16, %rsp               /* Align to 16 byte */
     call _start_c                 /* Call main _start_c function */
+    hlt                           /* Halt if somehow _start_c returns */

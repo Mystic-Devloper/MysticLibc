@@ -13,7 +13,7 @@
 
 /* Prologue section of init */
 .section .init, "ax"
-.type _init, %function
+.type _init, @function
 .align 2
 _init:
     push {r11, lr}            /* Save frame pointer and return address */
@@ -21,7 +21,7 @@ _init:
 
 /* Prologue section of fini */
 .section .fini, "ax"
-.type _fini, %function
+.type _fini, @function
 .align 2
 _fini:
     push {r11, lr}            /* Save frame pointer and return address */
