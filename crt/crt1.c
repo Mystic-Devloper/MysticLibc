@@ -9,8 +9,6 @@
 #include <features.h>
 #include "libc.h"
 
-#define START "_start"
-
 /**
  * @breif Extern Defs.
  */
